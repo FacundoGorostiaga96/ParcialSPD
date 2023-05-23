@@ -5,7 +5,7 @@
 Gorostiaga Facundo 1°B
 
 # Proyecto: Montacarga de 3 plantas
-img/montacargas 3 pisos.jpg
+![Tinkercad](.img/montacargas 3 pisos.jpg)
 
 # Descripción
 Tenemos 3 pulsadores que cambian el visualizador de 7 segmentos, 1er pulsador sube del 0 al 3 prendiendo led verde, 2do pulsador baja hasta el 0 prendiendo led verde, 3er pulsador pone un delay para simular el frenado y prende luz roja
