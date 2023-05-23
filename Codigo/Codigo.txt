@@ -1,0 +1,111 @@
+//Gorostiaga Facundo Parcial 1 SPD 1°B
+#define A 13
+#define B 12
+#define C 11
+#define D 10
+#define E 9
+#define F 8
+#define G 7
+#define SUBE 6
+#define BAJA 5
+#define STOP 3
+#define ESPERA 3000
+#define GREEN 4
+#define RED 2
+
+int contadorDigito = 0;
+void setup()
+{
+  pinMode(A, OUTPUT);
+  pinMode(B, OUTPUT);
+  pinMode(C, OUTPUT);
+  pinMode(D, OUTPUT);
+  pinMode(E , OUTPUT);
+  pinMode(F , OUTPUT);
+  pinMode(G , OUTPUT);
+  pinMode(SUBE , INPUT_PULLUP);
+  pinMode(BAJA , INPUT_PULLUP);
+  pinMode(STOP , INPUT_PULLUP);
+  pinMode(GREEN, OUTPUT);
+  pinMode(RED, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  if(digitalRead(SUBE)==0)//entra al if si y solo si la condicion vale 1(true)
+  {
+    if(contadorDigito == 3)
+    {
+      delay(ESPERA);
+    }else{
+      contadorDigito++;
+      digitalWrite(GREEN, HIGH);
+      digitalWrite(RED, LOW);
+      delay(ESPERA);
+    }
+  } 
+  //imprimeDigito(contadorDigito);
+  if(digitalRead(BAJA)==0)
+  {
+    if(contadorDigito==0)
+    {
+      delay(ESPERA);
+    }else{
+      contadorDigito--;
+      digitalWrite(GREEN, HIGH);
+      digitalWrite(RED, LOW);
+      delay(ESPERA);
+    }
+  } 
+  //imprimeDigito(contadorDigito);
+  if(digitalRead(STOP)==0)
+  {
+    digitalWrite(GREEN, LOW);
+    digitalWrite(RED, HIGH);
+    delay(ESPERA);
+  }
+  imprimeDigito(contadorDigito);
+  Serial.println(contadorDigito);
+}
+
+void imprimeDigito(int digito)
+{
+  digitalWrite(13, LOW);
+  digitalWrite(12, LOW);
+  digitalWrite(11, LOW);
+  digitalWrite(10, LOW);
+  digitalWrite(9, LOW);
+  digitalWrite(8, LOW);
+  digitalWrite(7, LOW);
+  
+  switch(digito)
+  {
+   case 0:
+    digitalWrite(13, HIGH);
+    digitalWrite(12, HIGH);
+    digitalWrite(11, HIGH);
+    digitalWrite(10, HIGH);
+    digitalWrite(9, HIGH);
+    digitalWrite(8, HIGH);
+    break;
+   case 1:
+    digitalWrite(12, HIGH);
+    digitalWrite(11, HIGH);
+    break;
+   case 2:
+    digitalWrite(A, HIGH);
+    digitalWrite(B, HIGH);
+    digitalWrite(D, HIGH);
+  	digitalWrite(E, HIGH);
+    digitalWrite(G, HIGH);
+    break;
+   case 3:
+    digitalWrite(13, HIGH);
+    digitalWrite(12, HIGH);
+    digitalWrite(11, HIGH);
+    digitalWrite(10, HIGH);
+    digitalWrite(7, HIGH);
+    break;  
+  }    
+} 
